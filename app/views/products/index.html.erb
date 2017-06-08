@@ -1,47 +1,64 @@
 <!--p id="notice"><%= notice %></p-->
 
 <div class="container">
-    <h1>Productos</h1>
-    <hr>
-    <div class="table-responsive table-bordered">
-        <div class="panel filterable">
-            <div class="panel-heading">
-              <!--p class="pull-left"><%= link_to 'Nuevo producto', new_product_path %></p-->
-              <hr>
-              <div class="pull-right">
-                  <button class="btn btn-primary btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filtrar </button>
-              </div>
-            </div>
-            <table class="table table-hover">
-                <thead>
-                    <tr class="filters">
-                        <th><input type="text" class="form-control" placeholder="Nombre" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Proveedor" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Código" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Descripción" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Precio" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Estado" disabled></th>
-                        <th colspan="3"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                  <% @products.each do |product| %>
-                    <tr>
-                      <td><%= product.nombre %></td>
-                      <td><%= product.user.nombre %></td>
-                      <td><%= product.codigo %></td>
-                      <td><%= product.descripcion %></td>
-                      <td><%= number_to_currency(product.precio) %></td>
-                      <td><%= product.estado %></td>
-                      <td><%= link_to 'Ver', product %></td>
-                      <% if user_signed_in? and current_user == product.user %>
-                        <td><%= link_to 'Editar', edit_product_path(product) %></td>
-                        <td><%= link_to 'Eliminar', product, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
-                      <%end%>
-                    </tr>
-                  <% end %>
-                </tbody>
-            </table>
-        </div>
-    </div>
+  <h1>Productos</h1>
+  <hr>
+  <div class="table-responsive table-bordered">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar por nombre..">
+    <span class="glyphicon glyphicon-search"></span>
+    <br>
+    <table id="myTable" class="table table-hover">
+      <thead>
+        <tr class="header">
+          <th>Nombre</th>
+          <th>Proveedor</th>
+          <th>Código</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Estado</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.nombre %></td>
+            <td><%= product.user.nombre %></td>
+            <td><%= product.codigo %></td>
+            <td><%= product.descripcion %></td>
+            <td><%= number_to_currency(product.precio) %></td>
+            <td><%= product.estado %></td>
+            <td><%= link_to 'Ver', product %></td>
+            <% if user_signed_in? and current_user == product.user %>
+              <td><%= link_to 'Editar', edit_product_path(product) %></td>
+              <td><%= link_to 'Eliminar', product, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+            <%end%>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
+
+<script>
+function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+</script>

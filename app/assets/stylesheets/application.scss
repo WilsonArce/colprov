@@ -29,6 +29,20 @@
 	font-color: white;
  }
 
+ body{
+    background: image-url('border.jpg');
+    background-repeat: repeat-y;
+ }
+
+.sombra{
+    box-shadow: 0 15px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+    height: 150px;
+}
+
+.txt-justificado{
+    text-align : justify;
+}
+
 ///////////////////////////////////////////////
 
 .filterable {
