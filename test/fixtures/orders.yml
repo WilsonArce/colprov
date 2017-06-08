@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cliente: 1
+  proveedor: 1
+  descripcion: MyText
+  nota: MyText
+  estado: MyString
+
+two:
+  cliente: 1
+  proveedor: 1
+  descripcion: MyText
+  nota: MyText
+  estado: MyString

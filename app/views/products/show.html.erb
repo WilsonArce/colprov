@@ -1,0 +1,33 @@
+<!--p id="notice"><%= notice %></p-->
+<div class="container">
+  <!-- Heading Row -->
+  <div class="row" style="margin: 50px 5px 5px 5px">
+      <div class="col-md-8">
+          <img class="img-responsive img-rounded" src="http://placehold.it/900x400" alt="">
+      </div>
+      <!-- /.col-md-8 -->
+      <div class="col-md-4">
+          <h1><%= @product.nombre %></h1>
+          <p>
+            <strong>Proveedor:  </strong><%= @product.user.nombre %>
+          </p>
+          <p>
+            <strong>Codigo:  </strong><%= @product.codigo %>
+          </p>
+          <p>
+            <strong>Descripcion:  </strong><%= @product.descripcion %>
+          </p>
+          <p>
+            <strong>Precio:  </strong><%= number_to_currency(@product.precio) %>
+          </p>
+          <p>
+            <strong>Estado:  </strong><%= @product.estado %>
+          </p>
+          <a class="btn btn-primary btn-lg" href="#">Agredar al pedido</a>
+      </div>
+      <!-- /.col-md-4 -->
+  </div>
+  <!-- /.row -->
+  <%= link_to 'Editar', edit_product_path(@product) %> |
+  <%= link_to 'Back', :back %>
+</div>
