@@ -10,8 +10,8 @@
         <tr class="header">
           <th>Nombre</th>
           <th>Actividad</th>
-          <th>Actividad</th>
-          <th>Actividad</th>
+          <th>Ciudad</th>
+          <th>Dirección</th>
           <th colspan="1"></th>
         </tr>
       </thead>
@@ -20,8 +20,8 @@
         <tr>
           <td> <h4><%= provider.nombre %></h4> <img src="http://placehold.it/200x100" alt=""> </td>
           <td><%= provider.actividad %></td>
-          <td></td>
-          <td></td>
+          <td><%= provider.ciudad %></td>
+          <td><%= provider.direccion %></td>
           <td>
             <%= button_to 'Ver', show_provider_path(provider.id), :class => 'btn btn-xs btn-warning'%>
             <br>

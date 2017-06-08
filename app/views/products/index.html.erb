@@ -31,7 +31,7 @@
                       <td><%= product.user.nombre %></td>
                       <td><%= product.codigo %></td>
                       <td><%= product.descripcion %></td>
-                      <td><%= product.precio %></td>
+                      <td><%= number_to_currency(product.precio) %></td>
                       <td><%= product.estado %></td>
                       <td><%= link_to 'Ver', product %></td>
                       <% if user_signed_in? and current_user == product.user %>
