@@ -1,0 +1,29 @@
+<ul class="nav navbar-inverse navbar-nav navbar-right">
+    <% if user_signed_in?%>
+        <li><%= link_to "Mis proveedores", my_providers_path %></li>
+        <li><a href="#">Mis productos</a></li>
+        <!--li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-envelope"></a></li-->
+    <%end%>
+	<li class = "dropdown" style="background-color: rgba(57,57,64,0.9);">
+        <a href = "#opcionesCuenta" class = "dropdown-toggle " data-toggle = "dropdown" >
+        <% if user_signed_in?%>
+        	<%= "#{current_user.nombre}"%>
+        <%end%>
+        <span class="glyphicon glyphicon-user">
+        </a>
+        <ul class = "nav navbar-nav navbar-inverse dropdown-menu" role = "navigation"> 
+
+        <% if user_signed_in?%>
+        	<li><%= link_to "Editar cuenta", edit_user_registration_path %></li>
+            <li class = "divider"></li>
+            <li><%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></li>
+            <li class = "divider"></li>
+        <%else%>
+            <li><%= link_to "Iniciar sesión", new_user_session_path %></li>
+            <li class = "divider"></li>
+            <li><%= link_to "Crear cuenta", new_user_registration_path %>
+        <%end%>
+        </ul>
+    </li>
+</ul>

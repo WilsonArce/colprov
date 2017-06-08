@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Provapp</title>
+    <title>Colprov</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,10 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
 
     <!--Filter table-->
-    
 
 
-  </head>
       <!-- Static navbar -->
       <nav class="navbar navbar-inverse navbar-fixed-top" role = "navigation">
         <div class="container-fluid">
@@ -35,39 +33,17 @@
               <li><%= link_to "Proveedores", providers_path %></li>
               <li><%= link_to "Productos", products_path %></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-            <% if user_signed_in? %>
-              <li><a href="#">Mis proveedores</a></li>
-              <li><a href="#">Mis productos</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-envelope"></a></li>
-            <%end%>
-              <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <% if user_signed_in? %>
-                    <%= "#{current_user.nombre}"%>
-                  <%end%>
-                  <span class="glyphicon glyphicon-user">
-                  <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a><%= link_to "Iniciar sesión", new_user_session_path %></a></li>
-                  <li><a><%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></a></li>
-                  <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a><%= link_to "Crear cuenta", new_user_registration_path %></a></li>
-                  <li><a><%= link_to "Editar cuenta", edit_user_registration_path %></a></li>
-                </ul>
-              </li>
-            </ul>
+            <%= render "partials/login"%>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
 
+  </head>
   <body>
   <!--div class="container" style="margin-top: -20px">
   	<h2>Título de la vista</h2>
   </div-->
-  <div class="col-centered" style="margin: 50px 10px 10px 10px">
+  <div class="col-centered" style="margin: 80px 10px 10px 10px">
     <%= yield %>
   </div>
   </body>

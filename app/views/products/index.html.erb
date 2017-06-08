@@ -6,7 +6,7 @@
     <div class="table-responsive table-bordered">
         <div class="panel filterable">
             <div class="panel-heading">
-              <p class="pull-left"><%= link_to 'New Product', new_product_path %></p>
+              <!--p class="pull-left"><%= link_to 'Nuevo producto', new_product_path %></p-->
               <hr>
               <div class="pull-right">
                   <button class="btn btn-primary btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filtrar </button>
@@ -15,9 +15,9 @@
             <table class="table table-hover">
                 <thead>
                     <tr class="filters">
+                        <th><input type="text" class="form-control" placeholder="Nombre" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Proveedor" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Código" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Nombre" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Descripción" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Precio" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Estado" disabled></th>
@@ -27,9 +27,9 @@
                 <tbody>
                   <% @products.each do |product| %>
                     <tr>
+                      <td><%= product.nombre %></td>
                       <td><%= product.user.nombre %></td>
                       <td><%= product.codigo %></td>
-                      <td><%= product.nombre %></td>
                       <td><%= product.descripcion %></td>
                       <td><%= product.precio %></td>
                       <td><%= product.estado %></td>
