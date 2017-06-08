@@ -1,28 +1,35 @@
+
 <div class="container">
+  <h1>Mis proveedores</h1>
+  <hr>
   <div class="table-responsive table-bordered">
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar por nombre..">
     <br>
     <table id="myTable" class="table table-hover">
-      <tr class="header">
-        <th style="width:60%;">Name</th>
-        <th style="width:40%;">Country</th>
-      </tr>
-      <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Germany</td>
-      </tr>
-      <tr>
-        <td>Berglunds snabbkop</td>
-        <td>Sweden</td>
-      </tr>
-      <tr>
-        <td>Island Trading</td>
-        <td>UK</td>
-      </tr>
-      <tr>
-        <td>Koniglich Essen</td>
-        <td>Germany</td>
-      </tr>
+      <thead>
+        <tr class="header">
+          <th>Nombre</th>
+          <th>Actividad</th>
+          <th>Actividad</th>
+          <th>Actividad</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @user_providers.each do |provider|%>
+        <tr>
+          <td> <h4><%= provider.nombre %></h4> <img src="http://placehold.it/200x100" alt=""> </td>
+          <td><%= provider.actividad %></td>
+          <td></td>
+          <td></td>
+          <td>
+            <%= button_to 'Ver', show_provider_path(provider.id), :class => 'btn btn-xs btn-warning'%>
+            <br>
+            <%= button_to 'Eliminar de mi lista', delete_provider_path(provider.id), :class => 'btn btn-xs btn-danger', data: { confirm: 'Estas seguro?' }%>
+          </td>
+        </tr>
+      <%end%>
+      </tbody>
     </table>
   </div>
 </div>

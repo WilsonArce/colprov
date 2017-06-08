@@ -1,7 +1,7 @@
 <ul class="nav navbar-inverse navbar-nav navbar-right">
     <% if user_signed_in?%>
         <li><%= link_to "Mis proveedores", my_providers_path %></li>
-        <li><a href="#">Mis productos</a></li>
+        <li><%= link_to "Mis productos", my_products_path %></li>
         <!--li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></a></li>
         <li><a href="#"><span class="glyphicon glyphicon-envelope"></a></li-->
     <%end%>

@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-6 col-centered">
+  <div class="col-md-4 col-centered col-sm-offset-4">
     <%= bootstrap_form_for(@product, local: true) do |form| %>
       <% if product.errors.any? %>
         <div id="error_explanation">
@@ -34,8 +34,9 @@
       </div>
     
       <div class="row" align="center">
-        <%= form.submit %>
+        <%= form.submit "Guardar", :class => "btn btn-md btn-primary"%>
         <% end %>
+        <%= link_to 'Cancelar', :back %>
       </div>
 
   </div>

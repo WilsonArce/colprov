@@ -31,7 +31,7 @@
                   <% if user_signed_in? and current_user != provider %>
                     <td><%= button_to 'Ver', show_provider_path(provider.id), :class => 'btn btn-xs btn-warning'%></td>
                     <% if @user_providers.include? provider %>
-                    <td>Eliminar de mi lista</td>
+                    <td>En mi lista</td>
                     <%else%>
                     <td><%= button_to 'Añadir a mi lista', select_provider_path(provider.id), :class => 'btn btn-xs btn-success'%></td>
                     <%end%>

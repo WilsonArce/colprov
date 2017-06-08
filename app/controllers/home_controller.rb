@@ -7,7 +7,17 @@ class HomeController < ApplicationController
   def my_providers
   end
 
+  def my_products
+    @my_products = Product.where(user_id: current_user.id)
+  end
+
   def providers
+  end
+
+  def delete_provider
+    provider = User.find(params[:id])
+    Deal.where(proveedor: provider.id, cliente: current_user.id).destroy_all
+    redirect_to my_providers_path
   end
 
   def show_provider
@@ -34,8 +44,6 @@ class HomeController < ApplicationController
     if user_signed_in?
       @deals = Deal.all
       @deals.each do |deal|
-        puts deal.cliente
-        puts current_user.id
         if deal.cliente == current_user.id
           @user_providers.push(User.find_by_id(deal.proveedor))
         end

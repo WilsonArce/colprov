@@ -1,0 +1,24 @@
+<div class="container">
+	<h1>Mis productos <h4><%= link_to 'Nuevo producto', new_product_path %></h4> </h1>
+	<hr>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<% @my_products.each do |product|%>
+					<div class="col-sm-4 col-lg-4 col-md-4">
+						<div class="thumbnail">
+							<img src="http://placehold.it/320x150" alt="">
+							<div class="caption">
+								<h4 class="pull-right"><%= number_to_currency(product.precio) %></h4>
+								<h4><a><%= link_to product.nombre, product %></a></h4>
+								<p><%= product.descripcion %></p>
+				        <p><%= link_to 'Editar', edit_product_path(product) %> |
+				        <%= link_to 'Eliminar', product, method: :delete, data: { confirm: 'Estas seguro?' } %><p>
+							</div>
+						</div>
+					</div>
+				<%end%>
+			</div>
+		</div>
+	</div>
+</div>
